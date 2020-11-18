@@ -1,0 +1,5 @@
+#+TITLE: My Personal Scoop Bucket
+
+#+BEGIN_EXAMPLE
+  scoop bucket add ajgrf https://github.com/ajgrf/scoop-bucket.git
+#+END_EXAMPLE
