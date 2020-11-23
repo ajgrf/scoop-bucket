@@ -1,0 +1,37 @@
+{
+  "description": "Resource fonts for all-the-icons.el",
+  "version": "4.0.1",
+  "license": "MIT,OFL-1.1,Apache-2.0",
+  "homepage": "https://github.com/domtronn/all-the-icons.el",
+  "checkver": "github",
+  "url": [
+    "https://github.com/domtronn/all-the-icons.el/raw/4.0.1/fonts/all-the-icons.ttf",
+    "https://github.com/domtronn/all-the-icons.el/raw/4.0.1/fonts/file-icons.ttf",
+    "https://github.com/domtronn/all-the-icons.el/raw/4.0.1/fonts/fontawesome.ttf",
+    "https://github.com/domtronn/all-the-icons.el/raw/4.0.1/fonts/material-design-icons.ttf",
+    "https://github.com/domtronn/all-the-icons.el/raw/4.0.1/fonts/octicons.ttf",
+    "https://github.com/domtronn/all-the-icons.el/raw/4.0.1/fonts/weathericons.ttf"
+  ],
+  "hash": [
+    "f0a1ecf206d49af401aec06945f13c81c5591df5e81d57598bb822c111d0c3e7",
+    "8ed9ee20d8f26abbd0fba2765f1e6c8b783e8ee8a8fb02462dffbbfdde71c6cc",
+    "ae19e2e4c04f2b04bf030684c4c1db8faf5c8fe3ee03d1e0c409046608b38912",
+    "b7f4a3ab562048f28dd1fa691601bc43363a61d0f876d16d8316c52e4f32d696",
+    "027e1b2278bd2ea3c10850724ad85fdad610da7f4aa79647c15b96aeb5921ee4",
+    "176bda6661f213dde47c2114d76e476ec8ca9aae07dd54f9550d2d28fe02b4fd"
+  ],
+  "installer": {
+    "script": [
+      "Get-ChildItem $dir -filter '*.ttf' | ForEach-Object {",
+      "  New-ItemProperty -Path 'HKCU:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts' -Name $_.Name -Value $_.FullName -Force | Out-Null",
+      "}"
+    ]
+  },
+  "uninstaller": {
+    "script": [
+      "Get-ChildItem $dir -filter '*.ttf' | ForEach-Object {",
+      "  Remove-ItemProperty -Path 'HKCU:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts' -Name $_.Name -Force",
+      "}"
+    ]
+  }
+}
