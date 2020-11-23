@@ -1,0 +1,28 @@
+{
+  "description": "Coders' typeface, built from code",
+  "version": "3.7.1",
+  "license": "OFL-1.1",
+  "homepage": "https://typeof.net/Iosevka/",
+  "url": "https://github.com/be5invis/Iosevka/releases/download/v3.7.1/ttc-iosevka-slab-3.7.1.zip",
+  "hash": "41494ecca4888c06420e4fa0f6e2ff4f7ac15f0c01642455cb7c5be86fd979b1",
+  "checkver": {
+    "github": "https://github.com/be5invis/Iosevka"
+  },
+  "autoupdate": {
+    "url": "https://github.com/be5invis/Iosevka/releases/download/v$version/ttc-iosevka-slab-$version.zip"
+  },
+  "installer": {
+    "script": [
+      "Get-ChildItem $dir -filter '*.ttc' | ForEach-Object {",
+      "  New-ItemProperty -Path 'HKCU:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts' -Name $_.Name -Value $_.FullName -Force | Out-Null",
+      "}"
+    ]
+  },
+  "uninstaller": {
+    "script": [
+      "Get-ChildItem $dir -filter '*.ttc' | ForEach-Object {",
+      "  Remove-ItemProperty -Path 'HKCU:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts' -Name $_.Name -Force",
+      "}"
+    ]
+  }
+}
